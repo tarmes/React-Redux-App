@@ -9,7 +9,7 @@ const initialSearchValues = {
 
 function SearchForm(props) {
 
-    const { isLoading } = props;
+    const { isLoading, setUrl } = props;
 
     const [newSearch, setNewSearch] = useState(initialSearchValues);
 
@@ -20,6 +20,7 @@ function SearchForm(props) {
 
     const handleSubmit = (e) => {
         e.preventDefault();
+        setUrl(`https://api.lyrics.ovh/v1/${newSearch.artist}/${newSearch.song}`)
     }
 
     const renderLoader = () => {
