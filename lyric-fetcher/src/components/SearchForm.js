@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
+import Loader from 'react-loader-spinner';
 
 const initialSearchValues = {
     artist: '',
@@ -19,6 +20,20 @@ function SearchForm(props) {
 
     const handleSubmit = (e) => {
         e.preventDefault();
+    }
+
+    const renderLoader = () => {
+        return (
+            <>
+                <Loader
+                    type="Audio"
+                    color="#00BFFF"
+                    height={25}
+                    width={50}
+                    timeout={30000} //30 secs
+                />
+            </>
+        )
     }
 
     return (
@@ -41,7 +56,7 @@ function SearchForm(props) {
                     value={newSearch.song}
                 />
             </label>
-            <button>Submit Search</button>
+            <button>{isLoading ? renderLoader() : 'Search'}</button>
         </form>
     )
 }
