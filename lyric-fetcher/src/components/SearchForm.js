@@ -20,7 +20,9 @@ function SearchForm(props) {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        setUrl(`https://api.lyrics.ovh/v1/${newSearch.artist}/${newSearch.song}`)
+        const artistSearchUrl = newSearch.artist.replace(' ', '_');
+        const songSearchUrl = newSearch.song.replace(' ', '_');
+        setUrl(`https://api.lyrics.ovh/v1/${artistSearchUrl}/${songSearchUrl}`)
     }
 
     const renderLoader = () => {
