@@ -26,7 +26,7 @@ function LyricDisplay(props) {
             <div className='large-container'>
                 <div className={'lyric-display-container'}>
                     <h2>These are the lyrics:</h2>
-                    <div className={lyrics += '' ? 'lyrics-container-on' : 'lyrics-container-off'}>
+                    <div className='hello'>
                         <p>{lyrics}</p>
                     </div>
                 </div>
