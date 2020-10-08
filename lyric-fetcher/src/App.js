@@ -3,11 +3,12 @@ import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
 import './App.css';
 import SearchForm from './components/SearchForm';
 import { fetchLyrics } from './store/actions';
+import LyricDisplay from './components/LyricDisplay';
 import { connect } from 'react-redux';
 
 function App(props) {
 
-  const { fetchLyrics, lyrics } = props;
+  const { fetchLyrics } = props;
 
   const [url, setUrl] = useState('https://api.lyrics.ovh/v1/artist/title')
 
@@ -19,18 +20,17 @@ function App(props) {
     <div className="App">
       <header className="App-header">
         <h1>Please search for your favorite song!</h1>
-        <SearchForm setUrl={setUrl}/>
-        <h2>These are the lyrics:</h2>
-        <p>{lyrics}</p>
       </header>
+      <SearchForm setUrl={setUrl}/>
+      <LyricDisplay />
     </div>
   );
 }
 
 const mapStateToProps = (state) => {
   return {
-    lyrics: state.lyrics
+    state
   }
 }
 
-export default connect(mapStateToProps, { fetchLyrics })(App);
+export default connect( mapStateToProps, { fetchLyrics })(App);

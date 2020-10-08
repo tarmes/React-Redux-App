@@ -3,6 +3,7 @@ import { FETCH_LYRICS_START, FETCH_LYRICS_SUCCESS } from '../actions';
 const initialState = {
     lyrics: '',
     isLoading: false,
+    isLoaded: false,
     error: ''
 }
 
@@ -16,7 +17,9 @@ export const reducer = (state = initialState, action) => {
         case FETCH_LYRICS_SUCCESS: 
             return {
                 ...state,
-                lyrics: action.payload.lyrics
+                lyrics: action.payload.lyrics,
+                isLoaded: true,
+                isLoading: false
             };
         default:
             return state;
